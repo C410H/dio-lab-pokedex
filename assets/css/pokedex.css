@@ -148,10 +148,6 @@
     border-radius: 1rem;
 }
 
-/* Modal */
-
-
-
 .pokemonModal {
     display: none; 
     position: fixed; 
@@ -173,13 +169,9 @@
     width: 80%; 
 }
 
-
-
 .modal-img{
     text-align: center;
 }
-
-
 
 .close {
     color: #FFF;
