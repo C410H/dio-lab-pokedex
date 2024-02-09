@@ -12,33 +12,36 @@ function loadPokemonItens(offset, limit) {
       const newHTML = pokemonList
         .map(
           (pokemon) =>
-            ` <li class="pokemon ${pokemon.type}" onclick="ModelDetail()">
+            `<a href="#${pokemon.name}">
+              <li class="pokemon ${pokemon.type}" onclick="ModelDetail('${pokemon.name}')">
                     <span class="number">${pokemon.number}</span>
                     <samp class="name">${pokemon.name}</samp>
 
-                    <div class="detail">
-                        <ol class="types">
-                            ${pokemon.types
-                              .map(
-                                (type) =>
-                                  `<li class="type ${type}">${type}</li>`
-                              )
-                              .join("")}
-                        </ol>
+                    
+                  
+                      <div class="detail">
+                          <ol class="types">
+                              ${pokemon.types
+                                .map(
+                                  (type) =>
+                                    `<li class="type ${type}">${type}</li>`
+                                )
+                                .join("")}
+                          </ol>
 
-                        <img src="${pokemon.photo}" alt="${pokemon.name}">
-                    </div>    
-                </li>`
+                          <img src="${pokemon.photo}" alt="${pokemon.name}">
+                      </div>              
+              </li>
+            </a>`
+            
         )
         .join("");
 
       const modalHTML = pokemonList
         .map(
           (pokemon) =>
-            `<div class="pokemonDetail ${pokemon.type}" id="${
-              pokemon.name
-            }" style="display=none">
-
+            `<div class="pokemonDetail ${pokemon.type}" id="${pokemon.name}" style="display=none">
+                
                     <div class="modal-content">
                         
                         <h2>${pokemon.name}</h2>
@@ -63,7 +66,7 @@ function loadPokemonItens(offset, limit) {
                             </ol>
                         </div>
 
-                        <div class="modal-status">
+                        <div class="modal-status" id="${pokemon.name}">
                             <h3>Base Status</h3>
                             <ol class="status">
                                 <li class="">HP: ${pokemon.stats[0]}</li>
@@ -114,9 +117,10 @@ function ModelDetail() {
   detailPokemon.style.display = "block";
 
   var span = document.getElementsByClassName("close")[0];
-
+  
   span.onclick = function () {
     detailPokemon.style.display = "none";
-    modal.style.display = "none";
   };
+
+
 }

@@ -22,3 +22,7 @@ body{
 .modal-content h2{
     color: #fff;
 }
+
+a {
+    text-decoration: none;
+}
